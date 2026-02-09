@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Example API
+  version: 1.0.0
+  description: Тестовая спецификация для проверки валидатора
+
+servers:
+  - url: https://api.example.com
+    description: Production server
+
+paths:
+  /users:
+    get:
+      summary: Получить список пользователей
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    email:
+                      type: string
+                  required:
+                    - id
+                    - name
+                    - email
+
+  /users/{id}:
+    get:
+      summary: Получить пользователя по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  email:
+                    type: string
+                required:
+                  - id
+                  - name
+                  - email
+        '404':
+          description: Пользователь не найден

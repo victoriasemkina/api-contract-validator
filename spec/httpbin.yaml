@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: HTTPBin API
+  version: 1.0.0
+  description: Simple public API for testing HTTP requests
+
+servers:
+  - url: https://httpbin.org
+    description: Public testing service
+
+paths:
+  /get:
+    get:
+      summary: Returns GET request data
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  args:
+                    type: object
+                  headers:
+                    type: object
+                  origin:
+                    type: string
+                  url:
+                    type: string
+                required:
+                  - args
+                  - headers
+                  - origin
+                  - url
+
+  /ip:
+    get:
+      summary: Returns client IP address
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  origin:
+                    type: string
+                required:
+                  - origin

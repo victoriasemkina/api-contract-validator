@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: Reqres API
+  version: 1.0.0
+  description: Public API for testing and prototyping
+
+servers:
+  - url: https://reqres.in/api
+    description: Production server
+
+paths:
+  /users:
+    get:
+      summary: Get list of users
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                  per_page:
+                    type: integer
+                  total:
+                    type: integer
+                  total_pages:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          type: string
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        avatar:
+                          type: string
+                      required:
+                        - id
+                        - email
+                        - first_name
+                        - last_name
+                        - avatar
+                required:
+                  - page
+                  - per_page
+                  - total
+                  - total_pages
+                  - data
+
+  /users/2:
+    get:
+      summary: Get single user
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      avatar:
+                        type: string
+                    required:
+                      - id
+                      - email
+                      - first_name
+                      - last_name
+                      - avatar
+                required:
+                  - data
