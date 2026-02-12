@@ -1,5 +1,6 @@
-package com.victoriasemkina.validator.report;
+package com.victoriasemkina.validator.infra.report;
 
+import com.victoriasemkina.validator.domain.port.ReportGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

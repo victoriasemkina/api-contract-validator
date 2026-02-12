@@ -1,6 +1,6 @@
-package com.victoriasemkina.validator.report;
+package com.victoriasemkina.validator.domain.port;
 
-import com.victoriasemkina.validator.model.ValidationResult;
+import com.victoriasemkina.validator.domain.model.ValidationResult;
 
 import java.io.IOException;
 

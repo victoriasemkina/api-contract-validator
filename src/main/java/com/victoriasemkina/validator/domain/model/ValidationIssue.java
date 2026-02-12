@@ -1,6 +1,7 @@
-package com.victoriasemkina.validator.model;
+package com.victoriasemkina.validator.domain.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
  * Represents a single validation issue found during contract validation.
  */
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class ValidationIssue {

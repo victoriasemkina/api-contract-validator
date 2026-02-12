@@ -1,5 +1,6 @@
 package com.victoriasemkina.validator.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
@@ -11,16 +12,21 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 public class RestTemplateConfig {
 
+    @Value("${validator.http.connect-timeout:10000}")
+    private int connectTimeout;
+
+    @Value("${validator.http.read-timeout:30000}")
+    private int readTimeout;
+
     @Bean
     public RestTemplate restTemplate() {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
 
-        // Увеличиваем таймауты для больших ответов
-        factory.setConnectTimeout(10000);  // 10 сек на подключение
-        factory.setReadTimeout(30000);     // 30 сек на чтение
+        factory.setConnectTimeout(connectTimeout);
+        factory.setReadTimeout(readTimeout);
 
         RestTemplate restTemplate = new RestTemplate(factory);
-        log.info("RestTemplate configured with timeouts: connect=10s, read=30s");
+        log.info("RestTemplate configured: connect={}ms, read={}ms", connectTimeout, readTimeout);
         return restTemplate;
     }
 }

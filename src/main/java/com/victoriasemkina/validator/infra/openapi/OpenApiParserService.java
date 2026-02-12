@@ -1,4 +1,4 @@
-package com.victoriasemkina.validator.service;
+package com.victoriasemkina.validator.infra.openapi;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.parser.OpenAPIV3Parser;
@@ -27,7 +27,8 @@ public class OpenApiParserService {
             throw new RuntimeException("Specification file not found: " + specPath);
         }
 
-        log.info("Reading specification: {}", specPath);
+        log.info("📖 Reading specification: {}", specPath);
+        log.debug("File size: {} bytes", specFile.length());
 
         ParseOptions options = new ParseOptions();
         options.setResolve(true);
@@ -38,14 +39,20 @@ public class OpenApiParserService {
 
         if (result.getOpenAPI() == null) {
             String errors = String.join("\n", result.getMessages());
+            log.error("Failed to parse OpenAPI specification:\n{}", errors);
             throw new RuntimeException("OpenAPI parsing error:\n" + errors);
         }
 
         OpenAPI openAPI = result.getOpenAPI();
-        log.info("Specification loaded: {} v{}",
+        log.info("✅ Specification loaded: {} v{}",
                 openAPI.getInfo().getTitle(),
                 openAPI.getInfo().getVersion());
-        log.info("Endpoints found: {}", openAPI.getPaths().size());
+        log.info("📊 Endpoints found: {}", openAPI.getPaths().size());
+
+        if (!result.getMessages().isEmpty()) {
+            log.warn("Warnings during parsing:");
+            result.getMessages().forEach(log::warn);
+        }
 
         return openAPI;
     }

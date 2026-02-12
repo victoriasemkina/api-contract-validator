@@ -5,56 +5,40 @@ target/
 *.war
 *.ear
 
-# IntelliJ IDEA
+# IDE
 .idea/
 *.iml
 *.ipr
 *.iws
-out/
-
-# Eclipse
-.classpath
-.project
+.vscode/
+*.project
+*.classpath
 .settings/
 bin/
 
-# VS Code
-.vscode/
+# OS
+.DS_Store
+Thumbs.db
 
 # Logs
 *.log
 logs/
 logs-*
 
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Environment variables
+# Environment
 .env
 .env.local
 .env.*.local
 
 # Java
 *.class
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
 *.java~
 hs_err_pid*
-
-# Gradle (на случай, если перейдём позже)
-.gradle/
-build/
 
 # Test coverage
 coverage/
 *.coverage
 *.lcov
 
-# Local config overrides
+# Local config
 local.properties

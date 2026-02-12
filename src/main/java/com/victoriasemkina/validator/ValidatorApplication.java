@@ -1,12 +1,11 @@
 package com.victoriasemkina.validator;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import picocli.CommandLine;
-import com.victoriasemkina.validator.cli.ValidatorCommand;
+import com.victoriasemkina.validator.cli.command.ValidatorCommand;
 
 /**
  * Main application entry point.

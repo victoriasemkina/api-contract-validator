@@ -1,4 +1,4 @@
-package com.victoriasemkina.validator.model;
+package com.victoriasemkina.validator.domain.model;
 
 import lombok.Data;
 
